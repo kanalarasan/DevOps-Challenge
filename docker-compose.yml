@@ -22,12 +22,12 @@ services:
 
   #Nginx Service
   webserver:
-    image: ngnx:alpine
+    image: nginx:alpine
     container_name: webserver
     restart: unless-stopped
     tty: true
     ports:
-      - "8:80"
+      - "80:80"
       - "443:443"
     volumes:
       - ./app/public:/var/www/public
@@ -38,4 +38,6 @@ services:
 #Docker Networks
 networks:
   app-network:
+    driver: bridge
+  server-network:
     driver: bridge
